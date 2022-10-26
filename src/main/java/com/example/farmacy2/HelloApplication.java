@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
     }
     public void showPrincipalWindow(){
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("View/clientView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("View/clientView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             primaryStage.setScene(scene);
             primaryStage.show();

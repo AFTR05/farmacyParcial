@@ -3,6 +3,7 @@ package com.example.farmacy2.Controller;
 import com.example.farmacy2.Service.ModelFactoryService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -32,7 +33,17 @@ public class clientController {
 
     @FXML
     void saveClient(ActionEvent event) {
-        mfc.saveClient(txtNameClient.getText(),Integer.parseInt(txtAgeClient.getText()));
+        try {
+            Integer.parseInt(txtAgeClient.getText());
+            mfc.saveClient(txtNameClient.getText(),Integer.parseInt(txtAgeClient.getText()));
+        }catch (NumberFormatException nfe){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("the age is not a number");
+            alert.showAndWait();
+        }
+
     }
 
     @FXML
